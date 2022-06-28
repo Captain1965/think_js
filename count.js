@@ -1,9 +1,7 @@
 function count(a){
-   var array = a.split('');
    var i = 0;
-   while (typeof array[i] === 'string') { 
+  while (a[i]) { 
       i++;
-   }
-   return(i);       
+  }
+  return(i);       
 }
- 

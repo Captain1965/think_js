@@ -1,11 +1,11 @@
 var formUser = {
- age: 35,
+ age: 17,
  paid: true,
  blocked: false,
  badUsername: false,
- isAdmin: false
+ isAdmin: true
 }
-if (formUser.isAdmin) 
+if (formUser.isAdmin && (formUser.age <=35 && formUser.age >= 18))
   console.log('admitted')
 else if ((formUser.age <= 35)
   &&(formUser.age >= 18)

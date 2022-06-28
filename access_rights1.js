@@ -5,7 +5,8 @@ var formUser = {
  badUsername: false,
  isAdmin: false
 }
- formUser.isAdmin? console.log('admitted'): (formUser.age >= 18 
+var administrationTerms = formUser.isAdmin && (formUser.age <=35 && formUser.age >= 18)
+  administrationTerms? console.log('admitted'): (formUser.age >= 18 
                                               && formUser.age <= 35 
                                               &&(formUser.paid)
                                               &&(!formUser.blocked)
