@@ -4,13 +4,9 @@
 // filterByLength(fruits, 0, 5) // ['lime', 'apple', '']
 
 const fruits = ['lime', 'orange', 'apple', 'banana', ''];
-var arrayBack = [];
-function filterByLength(dataArray, minLength, maxLength) {
-  dataArray.forEach (element => { 
-    if (element.length <= maxLength && element.length >= minLength)
-      arrayBack.push(element) 
-     } )
-  return arrayBack
+
+function filterByLength(dataArray, minLength, maxLength) 
+  { return dataArray.filter(x => x.length <= maxLength && x.length > minLength)
 }
-filterByLength(fruits, 0, 5) // ['lime', 'apple', '']
-console.log(arrayBack)
+console.log(filterByLength(fruits, 0, 5)) // ['lime', 'apple', '']
+console.log(filterByLength(['1', '22', '333'], 0, 2)) //[ '1', '22' ]
