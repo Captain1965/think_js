@@ -7,29 +7,32 @@ const human = Object.create ({} , {
   fullName: {
     set: function (valye) { 
       [this.firstName, this.lastName] = valye.split(' ')
-      this.lastName == undefined? this.lastName = '': this.lastName 
     },
-    get () { return this.firstName + '  ' + this.lastName
+    get () { return [this.firstName, this.lastName].filter(Boolean).join(' ')
       }
     },
 
 dateOfBirth: {
    set: function (valye) {
-     [this.yearOfbirth, this.monthOfbirth, this.dayOfbirth] =  valye.split(',')
-     age = Date().split(' ')[3] - this.yearOfbirth
-     },
-    get () { return 'age'+ ' '+age
+     [this.dayOfbirth, this.monthOfbirth, this.yearOfbirth] =  valye.split('.')
+   },
+     get () { return [this.dayOfbirth, this.monthOfbirth, this.yearOfbirth].join('.')
+            }
+    },
+age: { 
+   get() { age = Date().split(' ')[3] - this.yearOfbirth
+   return 'age ' + age 
       }
-    }
+    }  
 })
 
 human.fullName = 'Serg'
 console.log(human.fullName)
 
 human.fullName = 'Serg Pietrov'
-
-human.dateOfBirth = '1965,03,18'
-
-
 console.log(human.fullName)
+
+human.dateOfBirth = '18.03.1965'
 console.log(human.dateOfBirth)
+
+console.log(human.age)
