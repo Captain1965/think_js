@@ -12,18 +12,14 @@ const human = Object.create ({} , {
       }
     },
 
-dateOfBirth: {
-   set: function (valye) {
-     [this.dayOfbirth, this.monthOfbirth, this.yearOfbirth] =  valye.split('.')
-   },
+  dateOfBirth: {
+    set: function (valye) {
+      [this.dayOfbirth, this.monthOfbirth, this.yearOfbirth] =  valye.split('.');
+      this.age = new Date().getFullYear() - parseInt(this.yearOfbirth)
+    },
      get () { return [this.dayOfbirth, this.monthOfbirth, this.yearOfbirth].join('.')
             }
-    },
-age: { 
-   get() { age = Date().split(' ')[3] - this.yearOfbirth
-   return 'age ' + age 
-      }
-    }  
+    }
 })
 
 human.fullName = 'Serg'

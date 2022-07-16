@@ -1,14 +1,12 @@
 // Реализовать функцию для сравнения двух массивов, 
 // сравнение должно попарно сравнивать каждый элемент 
 function compareArray (array1,array2) {
-    return array1.map(element1 => array2.map(element2 => element1 == element2))
+ array1.map(function callback(element1,index) {console.log(element1 == array2[index])
+ })
 }
  array1 = [1,3,5,10]
  array2 = [1,3,4,5]
-console.log(compareArray(array1,array2))
-console.log(compareArray ([1,2], [2,1]))
-// возвращается результат сравнения каждого элемента массива array1  с каждым элементом массива array2
-// в виде true если элементы равны либо false если элементы не равны.
-// я не очень понимаю что имелось ввиду сравнить каждый элемент одного массива с каждым элементом другого,
-// сравнить пары элементов с одинаковыми номерами? 
-// И сравнить это только на предмет их равенства?
+compareArray(array1,array2)
+compareArray ([1,2], [2,1])
+
+
