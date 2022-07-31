@@ -6,6 +6,6 @@ console.log(compareArray(array1,array2))
 console.log(compareArray ([1,2], [2,1]))
 
 function compareArray (array1,array2) { 
-  return array1.map(function callback(item,index) {return item == array2[index]})
+  return array1.map(function (item,index) {return item == array2[index]})
     }
  
