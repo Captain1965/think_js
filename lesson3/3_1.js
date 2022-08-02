@@ -1,18 +1,18 @@
 
 function MoneyBox() {
-  this.coin = 0;
+  let coin = 0;
 
   this.getAmount = function() {
-    return this.coin;
+    return coin;
   };
   this.addCoin = function() {
-    return ++this.coin
+    return ++coin
    };
 };
 
 const box = new MoneyBox()
 console.log(box.getAmount())
-box.addCoin()
+box.coin = 999
 console.log(box.getAmount())
 box.addCoin()
 box.addCoin()

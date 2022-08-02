@@ -16,29 +16,27 @@
 
 function Calc() {
   let history = []
-  var i = -1
-
+  
   this.history = function() {return history};
   
   this.clearHistory = function() {history = []}
       
   this.operation = function(str) {
       split = str.split(' '),
-      a = +split[0],
-      b = +split[2],
+      a = parseFloat(split[0]),
+      b = parseFloat(split[2]),
       act = split[1]
-      history[++i] = {}
-      history[i]['operation'] = split[1],
-      history[i]['operand'] = [Number(a),Number(b)]
-      return this.action[act](a, b);
+      history.push({operation: act, operand: [a, b]})
+      return this.substruct[act](a, b);
+
    }
 
-  this.action = {
+  this.substruct = {
     "-": (a, b) => a - b,
   }
 
   this.addOperation = function(name, func) {
-    this.action[name] = func;
+    this.substruct[name] = func;
   }; 
 }
 
