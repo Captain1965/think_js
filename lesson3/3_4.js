@@ -10,25 +10,27 @@
 ticketWindow = {
   dataBase: {},
 
-  createEvent: function(eventName,priseTicket) {
+  createEvent: function(eventName,priseTicket) { 
     this.dataBase['amountCash'] = 0
     this.dataBase['idTicket'] = {}
-    this.dataBase[eventName] = {'priseTicket': Number(priseTicket)//, 'idTicket': {}
-    } 
+    this.dataBase['event'] = {'eventName': eventName} 
+    this.dataBase['event'][eventName] ={'priseTicket': Number(priseTicket)}
+    
+     
     return this.dataBase
   },
 
   buyTicket: function(name) { 
-    this.dataBase['amountCash'] += this.dataBase[name]['priseTicket']
+    this.dataBase['amountCash'] += this.dataBase['event'][name]['priseTicket']
     id = Math.round(Math.random()*1000000)
     this.dataBase['idTicket'][id] = true                                                                   
     return id
   },
 
   returnTicket: function(number) { 
-  let name = Object.keys(this.dataBase)[2]
+    let name = Object.keys(this.dataBase['event'])[1] // получение названия мероприятия
     if (String(number) in this.dataBase['idTicket']) {
-      this.dataBase['amountCash'] -= this.dataBase['Concert']['priseTicket']
+      this.dataBase['amountCash'] -= this.dataBase['event'][name]['priseTicket']
       delete this.dataBase['idTicket'][number]
     }
   },
@@ -38,7 +40,7 @@ ticketWindow = {
 
 
 ticketWindow.createEvent('Concert','500') //Реализовать систему продажи билетов, которая позволит продавать
-                                        // билеты и возвращать их ticketWindow.createEvent('Concert', 500)
+                                          // билеты и возвращать их ticketWindow.createEvent('Concert', 500)
 ticketWindow.buyTicket('Concert') //покупка билета
 ticketWindow.buyTicket('Concert') //покупка билета                                        
 ticketWindow.buyTicket('Concert') //покупка билета   

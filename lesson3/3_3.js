@@ -27,27 +27,26 @@ function Calc() {
       b = parseFloat(split[2]),
       act = split[1]
       history.push({operation: act, operand: [a, b]})
-      return this.substruct[act](a, b);
+      return this.action[act](a, b);
 
    }
 
-  this.substruct = {
-    "-": (a, b) => a - b,
+  this.action = {
+    "-": (a, b) => a - b, // sustruct
+    "+": (a, b) => a + b, // add
   }
 
   this.addOperation = function(name, func) {
-    this.substruct[name] = func;
+    this.action[name] = func;
   }; 
 }
 
 const calculator = new Calc
 console.log(calculator.operation('5 - 2'))
+console.log(calculator.operation('31 + 32'))
 
 calculator.addOperation('*', (a, b) => a * b)
 console.log(calculator.operation('5 * 2'))
-
-calculator.addOperation('+', (a, b) => a + b)
-console.log(calculator.operation('31 + 32'))
 
 calculator.addOperation('/', (a, b) => a / b)
 console.log(calculator.operation('10 / 2'))
