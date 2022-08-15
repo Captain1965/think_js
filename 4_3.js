@@ -58,4 +58,3 @@ AddFormerEmployee = {
 }
 
 FormerEmployee = Object.assign(Object.create(Employee), AddFormerEmployee)
-
