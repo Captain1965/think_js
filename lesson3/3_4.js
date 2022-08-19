@@ -9,30 +9,30 @@
 
 ticketWindow = {
   dataBase: {},
+  
 
   createEvent: function(eventName,priseTicket) { 
     this.dataBase['amountCash'] = 0
-    this.dataBase['idTicket'] = {}
-    this.dataBase['event'] = {'eventName': eventName} 
-    this.dataBase['event'][eventName] ={'priseTicket': Number(priseTicket)}
-    
-     
+    this.dataBase[eventName] = [priseTicket]
+    this.dataBase[eventName]['idTicket'] = {}     
     return this.dataBase
   },
 
-  buyTicket: function(name) { 
-    this.dataBase['amountCash'] += this.dataBase['event'][name]['priseTicket']
+  buyTicket: function(name) {
+     this.dataBase['amountCash'] += Number(this.dataBase[name][0])
     id = Math.round(Math.random()*1000000)
-    this.dataBase['idTicket'][id] = true                                                                   
+    this.dataBase[name]['idTicket'][id] = true                                                                   
     return id
   },
 
-  returnTicket: function(number) { 
-    let name = Object.keys(this.dataBase['event'])[1] // получение названия мероприятия
-    if (String(number) in this.dataBase['idTicket']) {
-      this.dataBase['amountCash'] -= this.dataBase['event'][name]['priseTicket']
-      delete this.dataBase['idTicket'][number]
-    }
+  returnTicket: function(number) {
+     name = Object.keys(this.dataBase) 
+     name.shift()
+     for( let i = 0; i < name.length; ++i )
+      if ((String(number)) in this.dataBase[name[i]]['idTicket']) {
+         delete this.dataBase[name[i]]['idTicket'][String(number)]
+         this.dataBase['amountCash'] -= Number(this.dataBase[name[i]][0])
+      }      
   },
 
   dataBaseShow: function() {console.log(this.dataBase)}
@@ -41,12 +41,17 @@ ticketWindow = {
 
 ticketWindow.createEvent('Concert','500') //Реализовать систему продажи билетов, которая позволит продавать
                                           // билеты и возвращать их ticketWindow.createEvent('Concert', 500)
+ticketWindow.createEvent('Concert2','1000')
+//ticketWindow.dataBaseShow()
 ticketWindow.buyTicket('Concert') //покупка билета
 ticketWindow.buyTicket('Concert') //покупка билета                                        
 ticketWindow.buyTicket('Concert') //покупка билета   
-ticketWindow.dataBaseShow() // показ базы с названием мероприятия суммы денег за реализованные билеты и id билетов
+//ticketWindow.dataBaseShow() // показ базы с названием мероприятия суммы денег за реализованные билеты и id билетов
 numberTicket = ticketWindow.buyTicket('Concert') // получение id проданного билета
-ticketWindow.dataBaseShow()//показ базы билетов
 console.log(numberTicket) // id - номер возвращаемого билета
-ticketWindow.returnTicket(numberTicket)// возврат билета с id номером
+ticketWindow.buyTicket('Concert2') //покупка билета
+ticketWindow.buyTicket('Concert2') //покупка билета                                        
+numberTicket2 = ticketWindow.buyTicket('Concert2') //покупка билета   
+ticketWindow.dataBaseShow()//показ базы билетов
+ticketWindow.returnTicket(numberTicket2)// возврат билета с id номером
 ticketWindow.dataBaseShow()// показ базы билетов
