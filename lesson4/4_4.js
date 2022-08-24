@@ -83,4 +83,4 @@ console.log(sailsShipYard)
 console.log(sailsShipYard.change(ship2))
 console.log(sailsShipYard.repair(ship2))
 console.log(sailsShipYard.paint(ship2))
-
+  

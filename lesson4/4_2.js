@@ -15,7 +15,7 @@ Calculator.prototype.perimetr = function() {return (this.side1 + this.side2)*2}
 Calculator.prototype.area = function() {return(this.side1 * this.side2) }
 
 Rectangle.prototype = new Calculator
-Square.prototype = new Calculator 
+Square.prototype = new Rectangle 
 
 rectangle = new Rectangle(5, 10)
 square = new Square(5) 
