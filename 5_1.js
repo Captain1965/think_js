@@ -58,4 +58,7 @@ class Game {
 }
 
 piecePawnWhite = new Pieсe('pawn', 'white', 'a', 2)
+pieceRookBlack = new Pieсe('rook', 'black', 'a', 8)
+
 console.log(piecePawnWhite)
+console.log(pieceRookBlack)
