@@ -12,7 +12,9 @@ parseTemplate = function(data, sample) {
         for (let key in sample) {
           if (children[i].getAttribute('data-field') === key) {
          children[i].textContent = sample[key]
-          } 
+          }
+          else {console.log('the object does not contain a mutable property' 
+          )} 
         }
       }
     } 
